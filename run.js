@@ -6,7 +6,7 @@ const Scrapper = async (url) => {
   await page.goto(url);
 
 
-  await page.type('[id=fi-q]', 'rice') 
+  await page.type('[id=fi-q]', 'ITEM_YOU_WANT_TO_SEARCH') 
 
 
   await page.evaluate(()=>{
@@ -31,28 +31,27 @@ const Scrapper = async (url) => {
 
   for (let i = 0; i < 40; i++) {
     
-      // article Div
+     
       const article = divNode[i]
       const articleNode = article.childNodes
    
-      // anchor Div
+     
       const anchor = articleNode[0]
       const anchorUrl = anchor.getAttribute('href')
       const anchorNode = anchor.childNodes
    
 
-      // Image Div
+      
       const imgDiv = anchorNode[0]
       const imgDivNode = imgDiv.childNodes
       const img = imgDivNode[0]
       var imgSrc = img.getAttribute('data-src')
 
-      // Info Div
+      
       const infoDiv = anchorNode[1]
       const infoDivNode = infoDiv.childNodes
       const infoDivNodeLength = infoDivNode.length
-      // var rDivNum = infoDivNodeLength - 1
-      // var infoValue = infoDivNode[1].nodeName
+     
 
       for (let i = 0; i < infoDivNodeLength; i++) {
         var value = infoDivNode[i]
